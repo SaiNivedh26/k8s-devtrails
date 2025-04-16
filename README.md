@@ -4,9 +4,9 @@ Awesome! Here's a **README** file with an **exaggerated, high-level explanation*
 
 ---
 
-# 🚀 AI-Driven Kubernetes Cluster Health Predictor
+#  AI-Driven Kubernetes Cluster Health Predictor
 
-## 🤖 Project Description
+## Project Description
 
 This project is an **AI-powered prediction service** designed to **simulate, monitor, and predict issues** in Kubernetes clusters using real-time metrics (or synthetic data for testing). It leverages **machine learning models** to forecast potential problems such as **resource exhaustion, pod failures, and network anomalies** — all at scale, and cloud-native!
 
@@ -32,7 +32,7 @@ This app serves as the **brain of your Kubernetes fleet**, empowering SREs, DevO
 
 ---
 
-## 🧠 Tech Stack
+##  Tech Stack
 
 - **Flask**: API server
 - **scikit-learn / joblib**: ML model loading and inference
@@ -77,22 +77,22 @@ docker push gcr.io/<PROJECT-ID>/predictor-service
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: predictor-service
+  name: service-registery
 spec:
-  replicas: 3
   selector:
     matchLabels:
-      app: predictor
-  template:
+      app: service-registery
+  template:  # Move this outside the selector
     metadata:
       labels:
-        app: predictor
+        app: service-registery
     spec:
       containers:
-      - name: predictor
-        image: gcr.io/<PROJECT-ID>/predictor-service
+      - name: service-registery
+        image: dailycodebuffer/serviceregistery:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 5000
+        - containerPort: 8761
 ```
 
 **`service.yaml`**
@@ -131,9 +131,9 @@ kubectl autoscale deployment predictor-service --cpu-percent=50 --min=2 --max=10
 
 ---
 
-### 🔄 Step 4: CI/CD (Optional Enhancements)
-- Use **Cloud Build** or **GitHub Actions** for continuous integration.
-- Use **Kustomize** or **Helm** for deployment templating.
+### 🔄 Step 4: CI/CD 
+- Used **Cloud Build** or **GitHub Actions** for continuous integration.
+- Used **Kustomize** or **Helm** for deployment templating.
 
 ---
 
