@@ -2,7 +2,9 @@
 
 ---
 
-<img src="https://github.com/user-attachments/assets/2283402f-f86a-447d-aafc-fcce3e2f28ed" alt="KubePulse logo" style="max-width:20%; height:auto;" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2283402f-f86a-447d-aafc-fcce3e2f28ed" alt="KubePulse logo" style="width: 30%; max-width: 200px; min-width: 100px;">
+</p>
 
 
 ## Project Description
