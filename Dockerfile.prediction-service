@@ -1,0 +1,21 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.prediction.txt .
+RUN pip install --no-cache-dir -r requirements.prediction.txt
+
+# Copy source code and trained models
+COPY main.py .
+COPY model.py .
+COPY app.py .
+COPY models/ models/
+COPY processed_data/ processed_data/
+
+# Create directories
+RUN mkdir -p plots logs
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]

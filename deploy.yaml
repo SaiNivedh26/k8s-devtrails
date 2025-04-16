@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-registery
+spec:
+  selector:
+    matchLabels:
+      app: service-registery
+  template:  # Move this outside the selector
+    metadata:
+      labels:
+        app: service-registery
+    spec:
+      containers:
+      - name: service-registery
+        image: dailycodebuffer/serviceregistery:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8761
+

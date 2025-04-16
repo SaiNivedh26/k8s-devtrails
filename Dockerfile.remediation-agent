@@ -1,0 +1,19 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.remediation.txt .
+RUN pip install --no-cache-dir -r requirements.remediation.txt
+
+# Copy source code
+COPY agent.py .
+
+# Create directories
+RUN mkdir -p logs
+
+# Set environment variables
+ENV SIMULATION_MODE=true
+ENV PREDICTION_SERVICE_URL=http://prediction-service:5000
+
+CMD ["python", "agent.py"]

@@ -1,0 +1,75 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: remediation-agent
+  namespace: k8s-remediation
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: remediation-agent-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "nodes", "services", "endpoints", "events"]
+  verbs: ["get", "list", "watch", "delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets", "daemonsets"]
+  verbs: ["get", "list", "watch", "patch", "update"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get", "list", "watch", "patch", "update", "create"]
+- apiGroups: ["networking.k8s.io"]
+  resources: ["networkpolicies"]
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: remediation-agent-binding
+subjects:
+- kind: ServiceAccount
+  name: remediation-agent
+  namespace: k8s-remediation
+roleRef:
+  kind: ClusterRole
+  name: remediation-agent-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: remediation-agent
+  namespace: k8s-remediation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: remediation-agent
+  template:
+    metadata:
+      labels:
+        app: remediation-agent
+    spec:
+      serviceAccountName: remediation-agent
+      containers:
+      - name: remediation-agent
+        image: remediation-agent:latest
+        imagePullPolicy: Never  # Use local image for Minikube
+        env:
+        - name: PREDICTION_SERVICE_URL
+          value: "http://prediction-service:5000"
+        - name: SIMULATION_MODE
+          value: "true"  # Set to true for testing without real Kubernetes actions
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+        volumeMounts:
+        - name: logs-volume
+          mountPath: /app/logs
+      volumes:
+      - name: logs-volume
+        emptyDir: {}

@@ -1,0 +1,16 @@
+2025-04-13 23:20:22,627 - remediation_agent - INFO - Using kubeconfig for Kubernetes configuration
+2025-04-13 23:20:22,627 - remediation_agent - INFO - Running in simulation mode. Kubernetes actions will be simulated.
+2025-04-13 23:20:22,627 - remediation_agent - INFO - Starting remediation agent, checking every 60 seconds
+2025-04-13 23:20:22,637 - remediation_agent - ERROR - Error getting predictions: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/simulate/5
+2025-04-13 23:20:22,637 - remediation_agent - ERROR - No predictions received
+2025-04-13 23:21:22,653 - remediation_agent - ERROR - Error getting predictions: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/simulate/5
+2025-04-13 23:21:22,653 - remediation_agent - ERROR - No predictions received
+2025-04-13 23:22:22,659 - remediation_agent - ERROR - Error getting predictions: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/simulate/5
+2025-04-13 23:22:22,659 - remediation_agent - ERROR - No predictions received
+2025-04-13 23:23:22,676 - remediation_agent - ERROR - Error getting predictions: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/simulate/5
+2025-04-13 23:23:22,676 - remediation_agent - ERROR - No predictions received
+2025-04-13 23:24:22,682 - remediation_agent - ERROR - Error getting predictions: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/simulate/5
+2025-04-13 23:24:22,682 - remediation_agent - ERROR - No predictions received
+2025-04-13 23:28:22,942 - remediation_agent - ERROR - Error getting predictions: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5000/simulate/5
+2025-04-13 23:28:22,942 - remediation_agent - ERROR - No predictions received
+2025-04-13 23:39:56,865 - remediation_agent - INFO - Remediation agent stopped

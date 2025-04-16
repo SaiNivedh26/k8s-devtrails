@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prediction-service
+  namespace: k8s-remediation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prediction-service
+  template:
+    metadata:
+      labels:
+        app: prediction-service
+    spec:
+      containers:
+      - name: prediction-service
+        image: prediction-service:latest
+        imagePullPolicy: Never  # Use local image for Minikube
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+          limits:
+            cpu: "1000m"
+            memory: "1Gi"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prediction-service
+  namespace: k8s-remediation
+spec:
+  selector:
+    app: prediction-service
+  ports:
+  - port: 5000
+    targetPort: 5000
+  type: ClusterIP

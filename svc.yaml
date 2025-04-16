@@ -1,0 +1,11 @@
+apiVersion: v1  # Correct API version
+kind: Service
+metadata:
+  name: service-registry-svc
+spec:
+  selector:
+    app: service-registery  # Match the label used in Deployment
+  ports:
+    - port: 80
+      targetPort: 8761
+
