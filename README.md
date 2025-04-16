@@ -111,18 +111,16 @@ spec:
 
 **`service.yaml`**
 ```yaml
-apiVersion: v1
+apiVersion: v1  # Correct API version
 kind: Service
 metadata:
-  name: predictor-service
+  name: service-registry-svc
 spec:
-  type: LoadBalancer
   selector:
-    app: predictor
+    app: service-registery  # Match the label used in Deployment
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 5000
+    - port: 80
+      targetPort: 8761
 ```
 
 Deploy to GKE:
