@@ -118,6 +118,116 @@ kubectl apply -f service.yaml
 ```
 ---
 
+---
+
+## ⚙️ Microservices Overview
+
+Here's a breakdown of the core microservices involved:
+
+| Service Name         | Functionality |
+|----------------------|---------------|
+| `frontend`           | UI for the Online Boutique app |
+| `load-generator`     | Simulates traffic to the app |
+| `failure-injector`   | Triggers chaos experiments (CPU stress, pod kill, etc.) |
+| `metrics-collector`  | Scrapes metrics from Prometheus |
+| `model-trainer`      | Trains Random Forest model from collected data |
+| `failure-predictor`  | Uses trained model to predict failures |
+| `monitoring`         | Stack with Prometheus + Grafana |
+| `chaos-operator`     | Chaos Mesh operator for fault injection |
+
+---
+
+## 🧱 Application Layer: Online Boutique (Google Microservices Demo)
+
+Deployed using Kubernetes manifests:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/GoogleCloudPlatform/microservices-demo/main/release/kubernetes-manifests.yaml
+```
+
+Key services:
+- `frontend`, `cartservice`, `checkoutservice`, `productcatalogservice`, etc.
+- These simulate a realistic e-commerce system with multiple dependencies.
+
+---
+
+## 🔁 Load Generator
+
+Continuously generates traffic to simulate normal operations.
+
+### Deployment:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: load-generator
+  template:
+    metadata:
+      labels:
+        app: load-generator
+    spec:
+      containers:
+      - name: load-generator
+        image: alpine/bombardier
+        args: ["-c", "20", "-d", "10m", "http://frontend.default.svc.cluster.local"]
+```
+
+---
+
+## 💣 Chaos Injection Service
+
+Uses **Chaos Mesh** to simulate failures.
+
+- **Pod Kill**, **CPU Stress**, **Network Delay**
+- Scheduled using Cron in the manifests
+
+### Example (Pod Kill):
+
+```yaml
+apiVersion: chaos-mesh.org/v1alpha1
+kind: PodChaos
+metadata:
+  name: pod-kill-frontend
+spec:
+  action: pod-failure
+  mode: one
+  selector:
+    namespaces:
+      - default
+    labelSelectors:
+      app: frontend
+  duration: "60s"
+  scheduler:
+    cron: "@every 5m"
+```
+
+---
+
+## 📊 Metrics Collector Service
+
+A Python service that scrapes data from Prometheus and Chaos Mesh APIs and stores it as JSON or CSV.
+
+### Example:
+
+```bash
+python collect_metrics.py
+```
+
+Stores:
+- CPU, memory, restart counts
+- Chaos experiment labels (stress, network, pod kill, etc.)
+- Timestamps
+
+---
+
+
+
 # Random Forest in Kubernetes Failure Prediction: Comparative Analysis and Project Application
 
 ## Comparative Analysis of Random Forest vs. Other Machine Learning Algorithms
