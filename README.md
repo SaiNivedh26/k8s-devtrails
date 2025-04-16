@@ -1,4 +1,7 @@
-# KubePulse - Predict, Prevent, Perform
+# <span style="color: #2196F3;">KubePulse</span> - 
+<span style="color: #4CAF50;">**Predict**</span>, 
+<span style="color: #FF9800;">**Prevent**</span>, 
+<span style="color: #FF5722;">**Perform**</span>
 
 
 ---
