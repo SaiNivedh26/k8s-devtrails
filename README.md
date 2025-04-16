@@ -3,9 +3,11 @@
 ---
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/2283402f-f86a-447d-aafc-fcce3e2f28ed" alt="KubePulse logo" style="width: 30%; max-width: 200px; min-width: 100px;">
+  <img src="https://github.com/user-attachments/assets/2283402f-f86a-447d-aafc-fcce3e2f28ed" alt="KubePulse logo" style="width: 30%; max-width: 300px; min-width: 200px;">
 </p>
 
+<br>
+---
 
 ## Project Description
 
