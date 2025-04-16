@@ -2,7 +2,6 @@
 
 ---
 
-#  AI-Driven Kubernetes Cluster Health Predictor
 
 ## Project Description
 
@@ -390,11 +389,33 @@ With this project, we're not just deploying a Flask app. we're deploying **an in
 
 [Azure Public Dataset - VM Traces](https://github.com/Azure/AzurePublicDataset)
 
+
+- Source: https://github.com/Azure/AzurePublicDataset
+- Description: Contains VM workload traces that can be translated to Kubernetes workloads
+- Advantage: Well-documented and includes CPU, memory usage patterns
+
+
+
+To set up this in youe environment, do as follow :
+
 ```
-Source: https://github.com/Azure/AzurePublicDataset
-Description: Contains VM workload traces that can be translated to Kubernetes workloads
-Advantage: Well-documented and includes CPU, memory usage patterns
+
+# Create a data directory if it doesn't exist
+mkdir -p data
+
+# Download Azure Public Dataset V2 (more recent than V1)
+# You can use one of the links from AzurePublicDatasetLinksV2.txt
+wget https://azurepublicdatasettraces.blob.core.windows.net/azurepublicdatasetv2/trace_data/vmtable/vmtable.csv.gz -P data/
+wget https://azurepublicdatasettraces.blob.core.windows.net/azurepublicdatasetv2/trace_data/deployments/deployments.csv.gz -P data/
+wget https://azurepublicdatasettraces.blob.core.windows.net/azurepublicdatasetv2/trace_data/vm_cpu_readings/vm_cpu_readings-file-1-of-195.csv.gz -P data/
+
+# Uncompress files
+gunzip data/*.gz
+
+
 ```
+
+
 
 ## Developers 
 
