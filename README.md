@@ -388,7 +388,7 @@ With this project, we're not just deploying a Flask app. we're deploying **an in
 
 ## Dataset :
 
-[Azure Public Dataset - VM Traces](github.com/Azure/AzurePublicDataset)
+[Azure Public Dataset - VM Traces](https://github.com/Azure/AzurePublicDataset)
 
 ```
 Source: https://github.com/Azure/AzurePublicDataset
