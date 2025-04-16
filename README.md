@@ -222,10 +222,6 @@ A Python service that scrapes data from Prometheus and Chaos Mesh APIs and store
 
 ### Example:
 
-```bash
-python collect_metrics.py
-```
-
 Stores:
 - CPU, memory, restart counts
 - Chaos experiment labels (stress, network, pod kill, etc.)
