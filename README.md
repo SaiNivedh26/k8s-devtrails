@@ -1,6 +1,5 @@
 # k8s-devtrails
 
-Awesome! Here's a **README** file with an **exaggerated, high-level explanation** of your app, integrating it with **Google Kubernetes Engine (GKE)** and detailing the **complete Kubernetes (K8s) workflow**.
 
 ---
 
