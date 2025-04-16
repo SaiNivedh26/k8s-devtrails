@@ -37,7 +37,8 @@ This app serves as the **brain of your Kubernetes fleet**, empowering SREs, DevO
 - **scikit-learn / joblib**: ML model loading and inference
 - **Pandas/Numpy**: Feature engineering
 - **Docker**: Containerization
-- **Kubernetes (GKE)**: Orchestration and deployment
+- **Azure Kubernetes Service (AKS)**: Production cluster
+- **Google Kubernetes Engine (GKE)**: Staging/Test cluster
 - **Google Cloud Platform**: Hosting the entire ML-powered microservice
 
 ---
@@ -135,6 +136,21 @@ kubectl autoscale deployment predictor-service --cpu-percent=50 --min=2 --max=10
 - Used **Kustomize** or **Helm** for deployment templating.
 
 ---
+
+
+## 🔁 Dev & Test Workflow: Azure + GKE
+
+| Environment | Cloud | Use Case                       |
+|-------------|-------|-------------------------------|
+| **Azure**   | AKS   | Production deployment          |
+| **GCP**     | GKE   | Staging, simulated stress test |
+
+> Push once, deploy to both with `kubectl apply`.
+
+You can also use **multi-cloud GitHub Actions** to build, test, and deploy to both environments in parallel!
+
+---
+
 
 ## 🧪 Testing Locally
 
