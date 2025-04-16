@@ -9,7 +9,7 @@
 
 This project is an **AI-powered prediction service** designed to **simulate, monitor, and predict issues** in Kubernetes clusters using real-time metrics (or synthetic data for testing). It leverages **machine learning models** to forecast potential problems such as **resource exhaustion, pod failures, and network anomalies** — all at scale, and cloud-native!
 
-This app serves as the **brain of your Kubernetes fleet**, empowering SREs, DevOps engineers, and platform teams to be *proactive* instead of *reactive*.
+This app serves as the **brain of your Kubernetes fleet**.
 
 ---
 
@@ -33,13 +33,20 @@ This app serves as the **brain of your Kubernetes fleet**, empowering SREs, DevO
 
 ##  Tech Stack
 
-- **Flask**: API server
-- **scikit-learn / joblib**: ML model loading and inference
-- **Pandas/Numpy**: Feature engineering
-- **Docker**: Containerization
+- **Azure**: Source for VM traces (production environment)
+- **Pandas / NumPy**: Used for EDA (Exploratory Data Analysis) and feature engineering
+- **scikit-learn**: Random Forest classifier model
+- **joblib**: For saving and loading the trained model
+- **Flask**: API server for Prediction Service and Remediation Agent
+- **Google Kubernetes Engine (GKE)**: Model deployment and testing (staging)
 - **Azure Kubernetes Service (AKS)**: Production cluster
-- **Google Kubernetes Engine (GKE)**: Staging/Test cluster
-- **Google Cloud Platform**: Hosting the entire ML-powered microservice
+- **Docker**: Containerizing applications and models
+- **Prometheus**: Monitoring
+- **Minikube**: Local Kubernetes testing
+- **Google Cloud Platform (GCP)**: Hosting environment for microservices
+- **Google's Online Boutique (microservice demo app)**: Testing failure scenarios
+- **Chaos Mesh**: For injecting failures into microservices
+
 
 ---
 
@@ -375,7 +382,7 @@ curl http://localhost:5000/simulate/5
 
 ## 🏁 Conclusion
 
-With this project, you're not just deploying a Flask app. You're deploying **an intelligent observability engine** that watches over your Kubernetes infrastructure like a hawk. Integrated with GKE, it's scalable, resilient, and production-ready.
+With this project, we're not just deploying a Flask app. we're deploying **an intelligent observability engine** that watches over our Kubernetes infrastructure like a hawk. Integrated with GKE, it's scalable, resilient, and production-ready.
 
 
 
