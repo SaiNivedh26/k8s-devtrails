@@ -31,6 +31,13 @@ This app serves as the **brain of your Kubernetes fleet**.
 
 ---
 
+## Pipeline
+
+![DevTrails](https://github.com/user-attachments/assets/79ba5ccf-f850-4a1c-b784-fd9944e853ac)
+
+
+---
+
 ##  Tech Stack
 
 - **Azure**: Source for VM traces (production environment)
